@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 1 - Hello Glitch</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -24,38 +24,47 @@
     <script type="text/javascript" src="../js/site.js" DEFER></script>
 	<!-- Use me for a JavaScript OOP Project -->
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
-	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
 </head>
 <body>
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 1 - Hello Glitch</h1>
 
 			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
+				<button id="clicker">reroll</button>
+				<div style= "display: flex; justify-content: center; align-items: center;">
+					<div
+					style="
+						font-family: fantasy;
+						border: thin solid gray;
+						padding: 1em;
+						margin: 1em;
+						box-shadow: 2px 2px 5px gray;
+						background: #ffe;
+						width: 50%;
+						white-space: pre-wrap;
+					"
+					id="box"
+					></div>
 				</div>
-                <div class="fullscreen-box">
-                    <button id="fullscreen">Fullscreen</button>
-                </div>
 			</div>
+			
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>Created a text generator based on <a href="https://glitch.com/~cmpm147-ex01-bad-quests" target="_new">cmpm147-ex01-bad-quests</a> that uses a combination of medieval text and gen z slang.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<p>The project is made of two main parts. The first is the base template string. The second is a dictionary containing filler text to be inserted into the template. Text is replaced using regex and a replacer() function.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>This was an interesting experiment, but I hope that the next experiments will be more complex.</p>
 			</div>
 
 		</section>
