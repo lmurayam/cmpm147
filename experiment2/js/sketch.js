@@ -15,6 +15,10 @@ let myInstance;
 let canvasContainer;
 var centerHorz, centerVert;
 
+let inc = 0.01;
+let seed = 0;
+let trees;
+
 class MyClass {
     constructor(param1, param2) {
         this.property1 = param1;
@@ -42,8 +46,14 @@ function setup() {
   canvas.parent("canvas-container");
   // resize canvas is the page is resized
 
-  // create an instance of the class
-  myInstance = new MyClass("VALUE1", "VALUE2");
+  generateTrees();
+  createButton("reimagine").mousePressed(() => {
+    seed++;
+    noiseSeed(seed);
+    //randomSeed(seed);
+    generateTrees();
+    
+  });
 
   $(window).resize(function() {
     resizeScreen();
@@ -51,29 +61,93 @@ function setup() {
   resizeScreen();
 }
 
-// draw() function is called repeatedly, it's the main animation loop
 function draw() {
-  background(220);    
-  // call a method on the instance
-  myInstance.myMethod();
-
-  // Set up rotation for the rectangle
-  push(); // Save the current drawing context
-  translate(centerHorz, centerVert); // Move the origin to the rectangle's center
-  rotate(frameCount / 100.0); // Rotate by frameCount to animate the rotation
-  fill(234, 31, 81);
-  noStroke();
-  rect(-125, -125, 250, 250); // Draw the rectangle centered on the new origin
-  pop(); // Restore the original drawing context
-
-  // The text is not affected by the translate and rotate
-  fill(255);
-  textStyle(BOLD);
-  textSize(140);
-  text("p5*", centerHorz - 105, centerVert + 40);
+  background(color('lightblue'));
+  
+  drawSun(mouseX,mouseY);
+  
+  drawMountain(color('white'),0);
+  drawMountain(color('grey'),10);
+  drawGrass();
+  drawRoad(color("black"));
+  seed += 0.001;
+  
+  for (let i = 0; i < trees.length; i++) {
+    let looop = (millis() / 8500.0)%1;
+    drawTree(trees[i][0]+width*looop,trees[i][1],trees[i][2])
+  }
 }
 
-// mousePressed() function is called once after every time a mouse button is pressed
-function mousePressed() {
-    // code to run when mouse is pressed
+function drawSun(x,y){
+  fill(color("yellow"));
+  circle(x,y,30);
+}
+
+function drawMountain(color, yoffset){
+  fill(color);
+  beginShape();
+  vertex(0, height);
+  let xoff = seed;
+  for (let x = 0; x < width; x++) {
+    let y = (noise(xoff) * height  +yoffset);
+    noStroke();
+    vertex(x, y);
+    
+    xoff -= inc;
+  }
+  vertex(width, height);
+  endShape(CLOSE);
+}
+
+function drawGrass(){
+  fill(color("green"));
+  rect(0,height*4/7,width,height);
+}
+
+function drawRoad(){
+  fill(0);
+  rect(0,height*3/4,width,height);
+  drawRoadColors();
+  fill(color("moccasin"));
+  rect(0,height*9/10,width,height);
+}
+
+function drawRoadColors(){
+  fill(color("yellow"))
+  let looop = (millis() / 1000.0) % 1;
+  let speed = 10
+  for (let i = 0; i < speed*3; i++) {
+    drawRoadRect((i-speed)+speed*looop);
+  }
+}
+
+function drawRoadRect(x){
+  let midRoad = (height*3/4 + height*9/10)/2
+  let size = width/40;
+  rect((x*size*4)-size*4,midRoad-size/2,size*2,size);
+}
+
+function drawTree(x,y,layers){
+  fill(color("darkgreen"));
+  let size = width/20;
+  let lx = x;
+  let ly = y;
+  
+  for (let i = 0; i < layers; i++) {
+    ly=y-i*10
+    if(lx>width){
+      lx-=width;
+    }
+    triangle(lx,ly,lx+size/2,ly-size,lx+size,ly);
+  }
+}
+
+function generateTrees(){
+  let max = height*4/7;
+  let min = height*3/4;
+  let numTrees = random(3,6);
+  trees = []
+  for (let i = 0; i < numTrees; i++) {
+    append(trees,[random(0,width),random(max,min),random(2,3)]);
+  }
 }
