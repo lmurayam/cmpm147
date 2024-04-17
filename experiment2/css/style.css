@@ -2,7 +2,7 @@
 
 /* Set the canvas element to be the full size of the container */
 canvas {
-    width: 100%;
+    width: 60%;
     height: 100%;
 }
 
@@ -14,6 +14,6 @@ body {
 }
 
 #canvas-container {
-    width: 100%;
+    width: 50%;
     height: 600px;
 }
