@@ -47,14 +47,13 @@ function setup() {
   // resize canvas is the page is resized
 
   generateTrees();
-  createButton("reimagine").mousePressed(() => {
+  $("#reimagine").click(() => {
     seed++;
     noiseSeed(seed);
     //randomSeed(seed);
     generateTrees();
     
   });
-
   $(window).resize(function() {
     resizeScreen();
   });
