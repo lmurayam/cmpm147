@@ -25,7 +25,7 @@
 	<!-- Use me for a JavaScript OOP Project -->
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
 	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/overworld.js" DEFER></script>
+	<script type="text/javascript" src="./js/dungeon.js" DEFER></script>
 	<!--<script type="text/javascript" src="./js/dungeon.js" DEFER></script>-->
 </head>
 <body>
@@ -33,7 +33,7 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment 3 - Alternate Worlds - Overworld</h1>
+			<h1>Experiment 3 - Alternate Worlds - Dungeon</h1>
 
 			<div class="minor-section">
 				
@@ -50,21 +50,20 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>Using noise to create round biomes natural looking biomes. The player can move a character with WASD or the arrow keys.</p>
+				<p>Generate rectangular rooms and connect them together. Uses autotiling logic for the walls.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
 				<p>An array keeps track of the location of tiles. A script then takes that array and fills in a grid with corresponding tiles from a tilesheet.
-					The array is generated using perlin noise, and the biome is determined by the value of the noise at specific coordinates.
-					Tiles check their neighbors to determine how to make transitions.
+					The array is created by generating rectangles and making sure they don't overlap. The corridors are created by taking the X midpoint of one room and the Y midpoint of another and then drawing a line to the new point from both rooms.
 				</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>I worked on this project alone. The difficult part of this was figuring out how to map tiles to the grid and figuring out how to make them transition.
-					Having the player character being able to move around in the map is a success in my opinion.
+				<p>I worked on this project alone. The difficult part of this was making sure the rooms didn't overlap and creating the corridors.
+					I think the autotiling turned out good, though it doesn't appear on the corridors because that would make them too narrow.
 				</p>
 			</div>
 
