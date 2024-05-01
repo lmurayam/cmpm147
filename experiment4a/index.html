@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 4 - Subject/Topic</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFER></script>
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+	<script type="text/javascript" src="./js/xxhash.min.js" DEFER></script>
+	<!--<script type="text/javascript" src="./js/dungeon.js" DEFER></script>-->
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 4 - Infinite Worlds - A</h1>
+
+			<div class="minor-section">
+				
+				<div>
+					<div id="container"></div>
+				</div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>
+					<b>Infinity</b>
+					<br>
+					As a fan of strategy games such as those in the Civilization series, I created an infinitely extending hexagonal terrain.
+					<br>
+					<b>Variation in Space</b>
+					<br>
+					There are three distinct terrain types in my terrain, those being water, sand, and grass. Viewers can see that the sand represents a beach for the transition between water and land. The grass tiles can have trees on them.
+					<br>
+					<b>Variations in Key</b>
+					<br>
+					Changing the key changes the layout of the world. The key determines where the biomes are located, where trees can spawn, the inital elevation of tiles, and the timing of the waves.
+					<br>
+					<b>Signs of Life</b>
+					<br>
+					Clicking a tile causes it's elevation to rise up. Water tiles move up and down as time passes to emulate waves.
+					<br>
+					<br>
+					<img src = "https://cdn.glitch.global/96ee0b0d-ac10-466f-ad64-6258c37444d0/civ5.jpg?v=1714526618532" width="400">
+				</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+				<p>
+					The world key is hashed using xxhash and converted into a number. That number is used as a seed for both random numbers and noise. 
+					This value is also used for hashing other values in the world which are used to create replicatable random distributions.
+					The hexagonal tiles are made by taking points on a circle that are rotated 1/6th degrees. Every other row is offset so the hexagons can tile the plane.
+					The fake 3D effect is made by redrawing the hexagon above the original by a certain amount, then drawing lines down which connect to the original.
+					The program overdraws the area so when the camera moves new tiles don't just pop in. 
+					Noise is used to distribute the different biomes and hashing the tile location with the world hash is used to determine if there should be a tree.
+					In other versions of this project, this may be slighly different.
+					A dictionary is used to keep track of if a tile is clicked.
+				</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>
+					I worked on this project alone so everything was made by me. I didn’t use any third party tilesets, instead using solid colors and shapes to create everything. I think it turned out pretty good. The most difficult aspect of this project was figuring out how to swap to the square grid for a hexagonal grid. I think the best part about this project is how well the fake 3D effect turned out. The way the water moves up and down also really ties the whole scene together, which is why all three versions have water. I tried to make the different versions unique without having to remake everything, part of that was making it so that clicking has a different effect in each version. I think it would have been more interesting if we had to start everything from scratch but only needed to make one version. 
+				</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
