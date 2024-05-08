@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 5 - Evolutionary Impressions</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <script type="text/javascript" src="../js/site.js" DEFEsR></script>
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/my_design.js" DEFER></script>
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
+	<main id="content">
+		<section>
+
+			<h1>Experiment 5 - Evolutionary Impressions</h1>
+
+			<div class="minor-section results">
+                <div class="results-top">
+                    <div class="image-container">
+                        <p id="original"></p>
+                        <p class="caption"></p>
+                    </div>
+                    <div class="image-container">
+                        <p id="active"></p>
+                        <p>Active Image</p>
+                    </div>
+                    <div class="image-container">
+                        <p id="best"></p>
+                        <p>Best Image</p>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <div class="controls-col1">
+                        <select id="dropper"></select>
+                        <button id="restart">
+                        restart
+                        </button>
+						<p>
+							Image size:<br /><input
+							  id="size_slider"
+							  type="range"
+							  min="1000"
+							  max="100000"
+							  value="20000"
+							/>
+						  </p>
+                        <p>
+                        Mutation rate (<span id="rate"></span>%):<br /><input
+                            id="slider"
+                            type="range"
+                            min="1"
+                            max="100"
+                            value="100"
+                        />
+                        </p>
+                    </div>
+                    <div class="controls-col2">
+                        <p>Active score: <span id="activeScore"></span></p>
+                        <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                        <p>Best score: <span id="bestScore"></span></p>
+                    </div>
+                </div>
+
+                <div class="results-bottom">
+                    <p id="memory" data-max-items="28"></p>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description</h2>
+				<p>
+					Given a specific image, this program outputs a version that is rendered using rectangles.
+				</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Technical</h2>
+                <p>
+					1. This program takes an image. <br>
+					2. The canvas is resized to the image, if the image is too large based on a slider then the image is scaled down.<br>
+					3. The program then creates x amount of random rectangles across the canvas from three different scales. <br>
+					4. The color of the rectangles are based on the average color the area takes up on the original image.<br>
+					5. The program then iterates through the pixels of the canvas comparing it with the original image and gives it a score.<br>
+					6. The highest scores are saved.<br>
+					7. The rectangles are then mutated based on the mutation rate, the mutation result in small movement in the x and y and small changes in the rectangle size.<br>
+					8. Repeat from step 4.
+				</p>
+			</div>
+
+			<div class="minor-section">
+				<h2>Reflection</h2>
+				<p>
+					This was a fun project. I've seen someone do something familiar to this for geometry dash. 
+					There is also a more complex version of this in <a href="https://github.com/Tw1ddle/geometrize">geometrize</a>.
+					I worked on this project by myself. 
+					The most annoying part was finding out that resizing the canvas to a width and height that are not whole numbers would break my coloring function.
+					But on the flip side, when it finally started working everything pretty much came together.
+				</p>
+			</div>
+
+		</section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+	</main>
+</body>
+</html>
